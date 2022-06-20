@@ -1,20 +1,40 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
 
+import AppContext from '../context/AppContext';
 import AButton from '../components/atoms/AButton';
 import AText from '../components/atoms/AText';
 
+import {ReducerTypes} from '../reducer/reducerTypes';
 import normalize from '../helpes/normalizeDimentions';
 import {colors} from '../styles/colors';
 
 const ChooseDifficulty = () => {
+  const {dispatch} = React.useContext(AppContext);
+
+  const handleChangeDifficulty = (difficulty: string) => {
+    dispatch({type: ReducerTypes.CHOSSEDIFFICULTY, payload: difficulty});
+  };
+
   return (
     <View style={styles.main}>
       <AText label="Choose a difficulty" style={styles.difficultySelected} />
       <View style={styles.container}>
-        <AButton label="Easy - (4x4)" style={styles.difficultyItem} />
-        <AButton label="Medium - (4x6)" style={styles.difficultyItem} />
-        <AButton label="Hard - (5x6)" style={styles.difficultyItem} />
+        <AButton
+          label="Easy - (4x4)"
+          style={styles.difficultyItem}
+          onPress={() => handleChangeDifficulty('Easy')}
+        />
+        <AButton
+          label="Medium - (4x6)"
+          style={styles.difficultyItem}
+          onPress={() => handleChangeDifficulty('Medium')}
+        />
+        <AButton
+          label="Hard - (5x6)"
+          style={styles.difficultyItem}
+          onPress={() => handleChangeDifficulty('Hard')}
+        />
       </View>
     </View>
   );

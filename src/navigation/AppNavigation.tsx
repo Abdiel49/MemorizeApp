@@ -6,23 +6,26 @@ import {createStackNavigator} from '@react-navigation/stack';
 import ChooseDifficulty from '../screens/ChooseDifficulty';
 
 import {screenNames} from './screenName';
+import AppProvider from '../context/AppProvider';
 
 const Stack = createStackNavigator();
 
 const AppNavigation = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name={screenNames.chooseDifficulty}
-          component={ChooseDifficulty}
-          options={{
-            title: 'Memory app',
-            headerShown: false,
-          }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <AppProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name={screenNames.chooseDifficulty}
+            component={ChooseDifficulty}
+            options={{
+              title: 'Memory app',
+              headerShown: false,
+            }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </AppProvider>
   );
 };
 
