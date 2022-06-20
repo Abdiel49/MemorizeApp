@@ -2,7 +2,6 @@ import React, {useReducer} from 'react';
 import AppContext from './AppContext';
 
 import {appReducer} from '../reducer/appReducer';
-// import {ActionRecuderInterface} from '../reducer/appReducer';
 
 interface Props {
   children: React.ReactNode;

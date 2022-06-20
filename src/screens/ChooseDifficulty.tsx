@@ -1,19 +1,26 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
 
 import AppContext from '../context/AppContext';
 import AButton from '../components/atoms/AButton';
 import AText from '../components/atoms/AText';
 
 import {ReducerTypes} from '../reducer/reducerTypes';
+import {RootStackParams} from '../navigation/RootStackParams';
 import normalize from '../helpes/normalizeDimentions';
 import {colors} from '../styles/colors';
 
+type NavigationProp = StackNavigationProp<RootStackParams, 'BoardGame'>;
+
 const ChooseDifficulty = () => {
   const {dispatch} = React.useContext(AppContext);
+  const navigation = useNavigation<NavigationProp>();
 
   const handleChangeDifficulty = (difficulty: string) => {
     dispatch({type: ReducerTypes.CHOSSEDIFFICULTY, payload: difficulty});
+    navigation.navigate('BoardGame');
   };
 
   return (

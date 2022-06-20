@@ -5,10 +5,11 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import ChooseDifficulty from '../screens/ChooseDifficulty';
 
-import {screenNames} from './screenName';
 import AppProvider from '../context/AppProvider';
+import BoardGame from '../screens/BoardGame';
+import {RootStackParams} from './RootStackParams';
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<RootStackParams>();
 
 const AppNavigation = () => {
   return (
@@ -16,11 +17,17 @@ const AppNavigation = () => {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
-            name={screenNames.chooseDifficulty}
+            name={'ChosseDifficulty'}
             component={ChooseDifficulty}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name={'BoardGame'}
+            component={BoardGame}
             options={{
-              title: 'Memory app',
+              title: '',
               headerShown: false,
+              headerTransparent: true,
             }}
           />
         </Stack.Navigator>
