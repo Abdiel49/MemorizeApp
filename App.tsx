@@ -10,6 +10,7 @@
 
 import React from 'react';
 import MemoryApp from './src/MemoryApp';
+import 'react-native-gesture-handler';
 
 const App = () => {
   return <MemoryApp />;
